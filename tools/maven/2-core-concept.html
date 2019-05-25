@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Maven 核心概念 | yxguang-knowledge-repo</title>
+    <meta name="description" content="The master has failed more times than the beginner has even tried.--Stephen McCranie">
+    <link rel="icon" href="/avatar.png">
+    
+    <link rel="preload" href="/assets/css/0.styles.3e1d0bd1.css" as="style"><link rel="preload" href="/assets/js/app.e02d9fbd.js" as="script"><link rel="preload" href="/assets/js/10.05012786.js" as="script"><link rel="prefetch" href="/assets/js/11.7f4c8376.js"><link rel="prefetch" href="/assets/js/12.2ed43d7b.js"><link rel="prefetch" href="/assets/js/13.37aa105c.js"><link rel="prefetch" href="/assets/js/14.e77b21d6.js"><link rel="prefetch" href="/assets/js/2.5416267e.js"><link rel="prefetch" href="/assets/js/3.a165f9b7.js"><link rel="prefetch" href="/assets/js/4.01df944a.js"><link rel="prefetch" href="/assets/js/5.b1bce939.js"><link rel="prefetch" href="/assets/js/6.c55552ec.js"><link rel="prefetch" href="/assets/js/7.0989eba2.js"><link rel="prefetch" href="/assets/js/8.bf1c5ba4.js"><link rel="prefetch" href="/assets/js/9.a8c04c93.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.3e1d0bd1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">yxguang-knowledge-repo</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Java知识</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/" class="nav-link">Java 基础</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">web知识</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/web/" class="nav-link">Web 基础</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/tools/maven/" class="nav-link router-link-active">Maven</a></li><li class="dropdown-item"><!----> <a href="/tools/cron/" class="nav-link">Cron</a></li></ul></div></div> <a href="https://github.com/Yxguang/knowledge-repo" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Java知识</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/" class="nav-link">Java 基础</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">web知识</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/web/" class="nav-link">Web 基础</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/tools/maven/" class="nav-link router-link-active">Maven</a></li><li class="dropdown-item"><!----> <a href="/tools/cron/" class="nav-link">Cron</a></li></ul></div></div> <a href="https://github.com/Yxguang/knowledge-repo" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>Maven 核心概念</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/tools/maven/2-core-concept.html#pom-文件" class="sidebar-link">POM 文件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/tools/maven/2-core-concept.html#项目坐标" class="sidebar-link">项目坐标</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/tools/maven/2-core-concept.html#项目依赖-dependencies" class="sidebar-link">项目依赖 dependencies</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#依赖范围scope" class="sidebar-link">依赖范围scope</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#传递性依赖" class="sidebar-link">传递性依赖</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#依赖调节" class="sidebar-link">依赖调节</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#可选依赖" class="sidebar-link">可选依赖</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#排除依赖" class="sidebar-link">排除依赖</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#归类依赖" class="sidebar-link">归类依赖</a></li></ul></li><li><a href="/tools/maven/2-core-concept.html#maven-仓库" class="sidebar-link">Maven 仓库</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#仓库的分类" class="sidebar-link">仓库的分类</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#本地仓库" class="sidebar-link">本地仓库</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#中央仓库" class="sidebar-link">中央仓库</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#私服" class="sidebar-link">私服</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#配置远程仓库" class="sidebar-link">配置远程仓库</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#远程仓库认证" class="sidebar-link">远程仓库认证</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#部署至远程仓库" class="sidebar-link">部署至远程仓库</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#配置仓库镜像" class="sidebar-link">配置仓库镜像</a></li></ul></li><li><a href="/tools/maven/2-core-concept.html#生命周期" class="sidebar-link">生命周期</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#clean生命周期" class="sidebar-link">clean生命周期</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#default-生命周期" class="sidebar-link">default 生命周期</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#site生命周期" class="sidebar-link">site生命周期</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#命令行与生命周期" class="sidebar-link">命令行与生命周期</a></li></ul></li><li><a href="/tools/maven/2-core-concept.html#插件" class="sidebar-link">插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#插件目标" class="sidebar-link">插件目标</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#插件绑定" class="sidebar-link">插件绑定</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#插件配置" class="sidebar-link">插件配置</a></li></ul></li><li><a href="/tools/maven/2-core-concept.html#聚合与继承" class="sidebar-link">聚合与继承</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#聚合" class="sidebar-link">聚合</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#继承" class="sidebar-link">继承</a></li><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#可继承的pom元素" class="sidebar-link">可继承的POM元素</a></li></ul></li><li><a href="/tools/maven/2-core-concept.html#依赖管理" class="sidebar-link">依赖管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/tools/maven/2-core-concept.html#dependenceis-与-dependencymanagement" class="sidebar-link">dependenceis 与 dependencyManagement</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="maven-核心概念"><a href="#maven-核心概念" aria-hidden="true" class="header-anchor">#</a> Maven 核心概念</h1> <h2 id="pom-文件"><a href="#pom-文件" aria-hidden="true" class="header-anchor">#</a> POM 文件</h2> <p>POM(Project Object Model) 全名为项目对象模型，定义了项目的基本信息，用于描述项目如何构建、声明项目依赖等等。</p> <h2 id="项目坐标"><a href="#项目坐标" aria-hidden="true" class="header-anchor">#</a> 项目坐标</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; 
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;com.cqeips.springcloud&lt;/groupId&gt;
+  &lt;artifactId&gt;springcloud-starter&lt;/artifactId&gt;
+	&lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;packaging&gt;jar&lt;/packaging&gt;
+	&lt;name&gt;springcloud-starter&lt;/name&gt;
+	&lt;description&gt;Spring cloud starter&lt;/description&gt;
+&lt;/project&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>xml 定义 XML 文件的版本和编码方式</li> <li>project pom 文件的根元素，以及命名空间等</li> <li>modelVersion pom 模型的版本，Maven2 、Maven3 来说，必须为4.0.0</li> <li>groupId 项目组，通常采用反域名格式，一般不定义到组织级别，应该定义到项目级别，如 <code>com.cqeips.springcloud</code></li> <li>artifactId 当前Maven项目组中唯一ID</li> <li>version 当前版本号</li> <li>packaging 打包方式，默认为 jar</li> <li>name 项目名称</li> <li>description 项目描述</li></ul> <p>其中 groupId、artifactId、version 是必选内容，这三个参数确定了项目的位置坐标，其他参数可选。</p> <h2 id="项目依赖-dependencies"><a href="#项目依赖-dependencies" aria-hidden="true" class="header-anchor">#</a> 项目依赖 <code>dependencies</code></h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;...&lt;/groupId&gt;
+      &lt;artifactId&gt;...&lt;/artifactId&gt;
+      &lt;version&gt;...&lt;/version&gt;
+      &lt;type&gt;...&lt;/type&gt;
+      &lt;scope&gt;...&lt;/scope&gt;
+      &lt;optional&gt;...&lt;/optional&gt;
+      &lt;exclusions&gt;
+        &lt;exclusion&gt;...&lt;/exclusion&gt;
+      &lt;/exclusions&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>dependencies 该元素描述了项目相关的所有依赖。可以包含一个或多个dependecy。</li> <li>dependency 单个依赖</li> <li>type 依赖类型，对应项目坐标定义的packaging。</li> <li>scope 依赖范围。</li> <li>optional 依赖是否可选。</li> <li>exclusions 用于排除传递性依赖</li></ul> <h3 id="依赖范围scope"><a href="#依赖范围scope" aria-hidden="true" class="header-anchor">#</a> 依赖范围<code>scope</code></h3> <p>用来控制依赖与classpath（编译classpath、测试classpath、运行classpath）的关系，maven的有以下几种依赖范围：</p> <ol><li>complile: 编译依赖范围。默认使用该依赖范围，对于编译、运行、测试三种classpath都有效。如：spring-core。</li> <li>test: 测试依赖范围。只对于测试classpath有效。如：junit。</li> <li>provided: 已提供依赖范围。对于编译和测试classpath有效，对于运行时无效。在运行时一般需要容器进行提供，不需要Maven重复引入。如sevlet-api。</li> <li>runtime: 运行时依赖范围。对于测试和运行classpath有效，对于编译主代码时无效。如JDBC驱动实现。</li> <li>system: 系统依赖范围。对于编译和测试classpath有效，对于运行时无效。需要通过<code>systemPath</code>显示指定依赖文件的路径。由于此依赖范围不是由Maven仓库解析的，而是与本机文件系统绑定，可能造成构建的不可移植，需谨慎使用。<code>systemPath</code>元素可以引用环境变量，如：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;dependency&gt;
+  &lt;groupId&gt;javax.sql&lt;/groupId&gt;
+  &lt;artifactId&gt;jdbc-stdext&lt;/artifactId&gt;
+  &lt;version&gt;2.0&lt;/version&gt;
+  &lt;scope&gt;system&lt;/scope&gt;
+  &lt;systemPath&gt;${java.home}/lib/rt.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ol start="6"><li>import: 导入依赖范围。该依赖不会对三种classpath产生影响。</li></ol> <h3 id="传递性依赖"><a href="#传递性依赖" aria-hidden="true" class="header-anchor">#</a> 传递性依赖</h3> <p>所谓传递性依赖指所依赖的包间接产生的依赖。如引入<code>spring-core</code>，会间接引入<code>common-logging</code>包。传递性依赖范围由直接依赖和间接依赖范围共同决定，依赖关系如下表所示：</p> <p>左边为直接依赖，顶部为间接依赖。</p> <table><thead><tr><th></th> <th>compile</th> <th>test</th> <th>provided</th> <th>runtime</th></tr></thead> <tbody><tr><td>compile</td> <td>compile</td> <td>——</td> <td>——</td> <td>runtime</td></tr> <tr><td>test</td> <td>test</td> <td>——</td> <td>——</td> <td>test</td></tr> <tr><td>provided</td> <td>provided</td> <td>——</td> <td>provided</td> <td>provided</td></tr> <tr><td>runtime</td> <td>runtime</td> <td>——</td> <td>——</td> <td>runtime</td></tr></tbody></table> <h3 id="依赖调节"><a href="#依赖调节" aria-hidden="true" class="header-anchor">#</a> 依赖调节</h3> <p>如果在项目中引入多个依赖包，可能造成传递性依赖问题。这时Maven遵循以下两个原则：</p> <ol><li>路径最短原则<br>
+如有两条依赖路径：
+<ul><li>A&gt;B&gt;C&gt;X(1.0)</li> <li>A&gt;D&gt;X(2.0)
+则X(2.0)优先解析使用。</li></ul></li> <li>顺序靠前原则<br>
+当路径长度相同时，谁靠前引入，谁优先使用。</li></ol> <h3 id="可选依赖"><a href="#可选依赖" aria-hidden="true" class="header-anchor">#</a> 可选依赖</h3> <p>不推荐使用! 某一个项目B实现了多个特性，其中特性一依赖于X，特性二依赖于Y，而且这两个特性是互斥的，用户不可能同时选择这两个特性。如果项目A依赖于项目B，则X、Y对于项目A来说则为可选依赖。</p> <h3 id="排除依赖"><a href="#排除依赖" aria-hidden="true" class="header-anchor">#</a> 排除依赖</h3> <p>看下面的例子</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+&lt;artifactId&gt;project-a&lt;/artifactId&gt;
+&lt;version&gt;1.0.0&lt;/version&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+    &lt;artifactId&gt;project-b&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;exclusions&gt;
+      &lt;exclusion&gt;
+        &lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+        &lt;artifactId&gt;project-c&lt;/artifactId&gt;
+      &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+    &lt;artifactId&gt;project-c&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>在项目A中引入项目B依赖，项目B又依赖于项目C，由于某种原因不想引入传递性依赖C，而是显示指定项目C的版本，这时可以使用<code>exclusion</code>排除传递性依赖C。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>A-------&gt;B------&gt;C(被排除)
+|-------&gt;C(显示指定版本)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="归类依赖"><a href="#归类依赖" aria-hidden="true" class="header-anchor">#</a> 归类依赖</h3> <p>在引入依赖库时，我们可以将依赖的版本单独提取出来，进行统一管理，方面后续修改或升级。这是就需要使用<code>properties</code>元素。如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;properties&gt;
+  &lt;springframework.version&gt;2.5.6&lt;/springframework.version&gt;
+&lt;/properties&gt;
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+    &lt;version&gt;${springframework.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+    &lt;version&gt;${springframework.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="maven-仓库"><a href="#maven-仓库" aria-hidden="true" class="header-anchor">#</a> Maven 仓库</h2> <h3 id="仓库的分类"><a href="#仓库的分类" aria-hidden="true" class="header-anchor">#</a> 仓库的分类</h3> <p>Maven仓库分为本地仓库和远程仓库。当引入一个依赖时，首先会在本地仓库进行查找，如果本地仓库不存在，则会访问远程仓库进行查找，同时下载到本地仓库。如果远程仓库也不存在该依赖，则报错。其中远程仓库又可以分为中央仓库、私服和其他仓库。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>                Maven仓库
+                   |
+      -----------------------------
+      |                           |
+  本地仓库                      远程仓库
+                                  |
+                 -------------------------------------
+                 |                |                  |
+             中央仓库             私服             其他仓库
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="本地仓库"><a href="#本地仓库" aria-hidden="true" class="header-anchor">#</a> 本地仓库</h3> <p>默认情况下，Maven 默认仓库地址为<code>~/.m2/repository</code>，如果用户希望自定义本地仓库地址，可以通过修改<code>~/.m2/settings.xml</code>进行设置，修改<code>localRepository</code>元素为希望的地址：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;settings&gt;
+  &lt;localRepository&gt;D:\java\repository\&lt;/localRepositry&gt;
+&lt;/settings&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="中央仓库"><a href="#中央仓库" aria-hidden="true" class="header-anchor">#</a> 中央仓库</h3> <p>Maven至少必须配置一个可用的远程仓库，<a href="https://repo.maven.apache.org/maven2/" target="_blank" rel="noopener noreferrer">中央仓库<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>就是这样一个默认的远程仓库。默认中央仓库的配置在<code>%MAVEN_HOME%\lib\maven-model-builder-3.5.0.jar</code>中：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;repositories&gt;
+ &lt;repository&gt;
+    &lt;id&gt;central&lt;/id&gt;
+    &lt;name&gt;Central Repository&lt;/name&gt;
+    &lt;url&gt;https://repo.maven.apache.org/maven2&lt;/url&gt;
+    &lt;layout&gt;default&lt;/layout&gt;
+    &lt;snapshots&gt;
+      &lt;enabled&gt;false&lt;/enabled&gt;
+    &lt;/snapshots&gt;
+  &lt;/repository&gt;   
+&lt;/repositories&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="私服"><a href="#私服" aria-hidden="true" class="header-anchor">#</a> 私服</h3> <p>详见<a href="#">搭建Maven私服</a></p> <h3 id="配置远程仓库"><a href="#配置远程仓库" aria-hidden="true" class="header-anchor">#</a> 配置远程仓库</h3> <p>在某些情况下，默认的中央仓库无法满足项目需求，需要配置额外的远程仓库。这时需要在POM文件中进行仓库配置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;...&lt;/id&gt;
+    &lt;name&gt;...&lt;/name&gt;
+    &lt;url&gt;...&lt;/url&gt;
+    &lt;release&gt;
+      &lt;enable&gt;true&lt;/enable&gt;
+      &lt;updatePolicy&gt;daily|never|always|interval:X&lt;/updatePolicy&gt;
+      &lt;checkSumPolicy&gt;...&lt;/checkSumPolicy&gt;
+    &lt;/release&gt;
+    &lt;snapshots&gt;
+      &lt;enable&gt;false&lt;/enable&gt;
+    &lt;/snapshots&gt;
+    &lt;layout&gt;default&lt;/layout&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>id 仓库的唯一ID，相同的ID，仓库的配置会被覆盖</li> <li>name 仓库名称</li> <li>url 仓库地址</li> <li>release 发布版本，enable为true表示开启发布版本下载</li> <li>snapshot 快照版本，enable为true表示开启快照版本下载</li> <li>layout 仓库布局，默认为Maven2或Maven3布局</li> <li>updatePolicy 更新策略，daily每天更新；never从不更新；always每次构建都检查更新；interval:X 每X分钟检查更新</li> <li>checkSumPolicy 检查校验和文件策略，warn/fail/ignore</li></ul> <h3 id="远程仓库认证"><a href="#远程仓库认证" aria-hidden="true" class="header-anchor">#</a> 远程仓库认证</h3> <p>有时为了安全方面考虑需要限制远程仓库的访问权限，需要对远程仓库配置认证信息。认证信息配置在<code>setting.xml</code>中：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;settings&gt;
+  ...
+  &lt;servers&gt;
+    &lt;id&gt;...&lt;/id&gt;
+    &lt;username&gt;...&lt;/username&gt;
+    &lt;password&gt;...&lt;/password&gt;
+  &lt;/servers&gt;
+&lt;/settings&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><code>setting.xml</code> 中<code>server</code>元素id 必须和 POM 文件中需要认证的<code>repository</code>保持一致。</p> <h3 id="部署至远程仓库"><a href="#部署至远程仓库" aria-hidden="true" class="header-anchor">#</a> 部署至远程仓库</h3> <p>有时需要将第三方构建或内部构建部署到远程仓库中，需要对POM文件进行配置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;distributionManagement&gt; 
+        &lt;repository&gt; 
+            &lt;uniqueVersion /&gt; 
+            &lt;id&gt; banseon-maven2 &lt;/id&gt; 
+            &lt;name&gt; banseon maven2 &lt;/name&gt; 
+            &lt;url&gt; file://${basedir}/target/deploy &lt;/url&gt; 
+            &lt;layout&gt;&lt;/layout&gt; 
+        &lt;/repository&gt; 
+        &lt;snapshotRepository&gt; 
+            &lt;uniqueVersion /&gt; 
+            &lt;id&gt; banseon-maven2 &lt;/id&gt; 
+            &lt;name&gt; Banseon-maven2 Snapshot Repository &lt;/name&gt; 
+            &lt;url&gt; scp://svn.baidu.com/banseon:/usr/local/maven-snapshot &lt;/url&gt; 
+            &lt;layout&gt;&lt;/layout&gt;
+        &lt;/snapshotRepository&gt; 
+    &lt;/distributionManagement&gt; 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>配置正确后在命令行运行<code>mvn clean deploy</code>进行部署。</p> <h3 id="配置仓库镜像"><a href="#配置仓库镜像" aria-hidden="true" class="header-anchor">#</a> 配置仓库镜像</h3> <p>仓库镜像往往比中央仓库提供更快速、稳定的服务。比如<a href="http://maven.aliyun.com/nexus/content/groups/public/" target="_blank" rel="noopener noreferrer">阿里云镜像<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。配置镜像仓库代替中央仓库，修改<code>settings.xml</code>：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;settings&gt;
+  &lt;mirrors&gt;
+    &lt;mirror&gt;
+      &lt;id&gt;aliyunmaven&lt;/id&gt;
+      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+      &lt;name&gt;阿里云公共仓库&lt;/name&gt;
+      &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;
+    &lt;/mirror&gt; 
+  &lt;/mirrors&gt;
+&lt;/settings&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>该配置中<code>mirrorOf</code>值为<code>central</code>表示使用镜像仓库代替中央仓库，任何对于中央仓库的请求都会转到该仓库。<code>mirrorOf</code>值为<code>*</code>表示该镜像为所有仓库的镜像。<br>
+更多阿里云镜像请参考<a href="https://maven.aliyun.com/mvn/view" target="_blank" rel="noopener noreferrer">AliRepo<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><br>
+Maven 支持更高级的镜像配置：</p> <ul><li><code>&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</code> 匹配所有远程仓库</li> <li><code>&lt;mirrorOf&gt;external:*&lt;/mirrorOf&gt;</code> 匹配所有远程仓库。使用<code>localhost</code>、<code>file://</code> 协议除外。匹配所有非本机远程仓库。</li> <li><code>&lt;mirrorOf&gt;repo1、repo2&lt;/mirrorOf&gt;</code> 匹配repo1和repo2，多个仓库使用<code>,</code>分割</li> <li><code>&lt;mirrorOf&gt;*,!repo1&lt;/mirrorOf&gt;</code> 匹配所有远程仓库，repo1除外。</li></ul> <h2 id="生命周期"><a href="#生命周期" aria-hidden="true" class="header-anchor">#</a> 生命周期</h2> <p>Maven 拥有三套独立的生命周期，分别为<code>clean</code>、<code>default</code>、<code>site</code>，每套生命周期相互独立互不干扰。每套生命周期又分为多个阶段(phase)，这些<code>phase</code>是有顺序的，后面的阶段依赖于前面的阶段。详见<a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference" target="_blank" rel="noopener noreferrer">Maven Lifecycle Reference<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="clean生命周期"><a href="#clean生命周期" aria-hidden="true" class="header-anchor">#</a> <code>clean</code>生命周期</h3> <p>用于清理项目，包含三个阶段：</p> <ol><li><code>pre-clean</code> 执行清理前需要完成的工作</li> <li><code>clean</code> 清理上次构建生成的文件</li> <li><code>post-clean</code> 执行清理后需要完成的工作</li></ol> <h3 id="default-生命周期"><a href="#default-生命周期" aria-hidden="true" class="header-anchor">#</a> <code>default</code> 生命周期</h3> <p>定义了构建时需要执行的所有步骤，其中包括的主要阶段如下：</p> <ul><li><code>validate</code></li> <li><code>initialize</code></li> <li><code>generate-sources</code></li> <li><code>process-sources</code> 处理项目主资源文件。一般来说指将<code>src/main/resources</code>目录内的内容进行变量替换等工作后，复制到项目输出的主<code>classpath</code>目录中。</li> <li><code>generate-resources</code></li> <li><code>process-resources</code></li> <li><code>compile</code> 编译项目的主源码。一般来说，是编译<code>src/main/java</code>目录下的Java文件至项目输出的主<code>classpath</code>目录中。</li> <li><code>process-classes</code> 处理项目测试资源文件。一般来说，是对<code>src/main/resources</code>目录内容进行变量替换等工作后，复制到项目输出的测试<code>classpath</code>目录中。</li> <li><code>generate-test-sources</code></li> <li><code>process-test-sources</code></li> <li><code>generate-test-resources</code></li> <li><code>process-test-resources</code></li> <li><code>test-compile</code> 编译项目的测试代码。一般来说，是编译<code>src/test/java</code>目录下的Java文件至项目输出的测试<code>classpath</code>目录中。</li> <li><code>process-test-classes</code></li> <li><code>test</code> 使用单元测试框架运行测试，测试代码不会被打包或部署。</li> <li><code>prepare-package</code></li> <li><code>package</code> 接受编译好的代码，打包成可发布的格式，如JAR。</li> <li><code>pre-integration-test</code></li> <li><code>integration-test</code></li> <li><code>post-integration-test</code></li> <li><code>verify</code></li> <li><code>install</code> 将包安装到Maven本地仓库，供本地其他Maven项目使用。</li> <li><code>deploy</code> 将最终的包部署到远程仓库，供其他开发人员和Maven项目使用。</li></ul> <h3 id="site生命周期"><a href="#site生命周期" aria-hidden="true" class="header-anchor">#</a> <code>site</code>生命周期</h3> <p>用于建立和发布项目站点，主要生命周期如下：</p> <ul><li><code>pre-site</code> 执行一些在项目站点之前需要完成的工作。</li> <li><code>site</code> 生成项目站点文档。</li> <li><code>post-site</code> 执行一些在生成项目站点之后需要完成的工作。</li> <li><code>site-deploy</code> 将生成的项目站点发布到服务器。</li></ul> <h3 id="命令行与生命周期"><a href="#命令行与生命周期" aria-hidden="true" class="header-anchor">#</a> 命令行与生命周期</h3> <ul><li><code>mvn clean</code> 调用 <code>clean</code> 生命周期的<code>clean</code>阶段。</li> <li><code>mvn test</code> 调用 <code>default</code> 生命周期的<code>test</code>阶段。实际执行会从<code>validate</code>阶段一直执行到<code>test</code>阶段。</li> <li><code>mvn clean install</code> 调用<code>clean</code> 生命周期<code>clean</code>阶段和<code>default</code>生命周期<code>install</code>阶段。</li> <li><code>mvn clean deploy site-deploy</code> 调用<code>clean</code>生命周期<code>clean</code>阶段，<code>default</code>生命周期<code>deploy</code>阶段，<code>site</code>生命周期<code>site-deploy</code>阶段</li></ul> <h2 id="插件"><a href="#插件" aria-hidden="true" class="header-anchor">#</a> 插件</h2> <p>插件往往与生命周期相互绑定，用于完成生命周期中定义的具体任务，插件以独立的构件形式存在。</p> <h3 id="插件目标"><a href="#插件目标" aria-hidden="true" class="header-anchor">#</a> 插件目标</h3> <p>对于一个插件而言，往往拥有很多个功能，这些功能能够完成多个任务。如<code>maven-dependency-plugin</code>，能够分析依赖、列出项目依赖树、列出项目所有已解析的依赖等等。这些功能同时聚合在一个插件中，每个功能就是一个插件目标。上述几个功能对应的插件目标为：<code>dependency:analyze</code>、<code>dependency:tree</code>、<code>dependency:list</code>，这种通用写法格式为：(插件前缀):(插件目标)。</p> <h3 id="插件绑定"><a href="#插件绑定" aria-hidden="true" class="header-anchor">#</a> 插件绑定</h3> <p>插件需要与生命周期的各阶段绑定才能正常工作，插件的绑定分为内置绑定和自定义绑定两种，下面分别看看这两种绑定。</p> <h4 id="内置绑定"><a href="#内置绑定" aria-hidden="true" class="header-anchor">#</a> 内置绑定</h4> <p>Maven生命周期的各阶段默认绑定了很多插件，当调用生命周期阶段的时候，对应的插件目标就会执行相应的任务。</p> <ul><li><code>clean</code>生命周期内置绑定</li></ul> <table><tr><th>生命周期</th> <th>插件目标</th></tr> <tr><td>pre-clean</td> <td rowspan="3">maven-clean-plugin:clean</td></tr> <tr><td>clean</td></tr> <tr><td>post-clean</td></tr></table> <ul><li><code>site</code>生命周期内置绑定</li></ul> <table><tr><th>生命周期</th> <th>插件目标</th></tr> <tr><td>pre-site</td> <td rowspan="3">maven-site-plugin:site</td></tr> <tr><td>site</td></tr> <tr><td>post-site</td></tr> <tr><td>site-deploy</td> <td>maven-site-plugin:deploy</td></tr></table> <ul><li><code>default</code> 生命周期内置绑定
+<code>default</code> 生命周期的内置绑定相对于<code>clean</code>、<code>site</code>来说比较复杂。项目的打包类型会影响构建的过程，因此，<code>default</code>生命周期的阶段与插件目标的绑定关系由项目打包类型所决定。最常见的为<code>jar</code>打包类型，内置插件绑定关系如下：</li></ul> <table><tr><th>生命周期</th> <th>插件目标</th></tr> <tr><td>process-resources</td> <td>maven-resources-plugin:resources</td></tr> <tr><td>compile</td> <td>maven-compiler-plugin:compile</td></tr> <tr><td>process-test-resources</td> <td>maven-resources-plugin:test-resources</td></tr> <tr><td>test-compile</td> <td>maven-compiler-plugin:test-compile</td></tr> <tr><td>test</td> <td>maven-surefire-plugin:test</td></tr> <tr><td>package</td> <td>maven-jar-plugin:jar</td></tr> <tr><td>install</td> <td>maven-install-plugin:install</td></tr> <tr><td>deploy</td> <td>maven-deploy-plugin:deploy</td></tr></table> <p>对于以上的内容仅列出其中部分内置依赖关系，详细内容请参考<a href="https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings" target="_blank" rel="noopener noreferrer">Maven Built-in Lifecycle Bindings<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h4 id="自定义绑定"><a href="#自定义绑定" aria-hidden="true" class="header-anchor">#</a> 自定义绑定</h4> <p>除了内置绑定外，用户还可以将某个插件目标绑定到生命周期的某个阶段。如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+      &lt;version&gt;2.1.1&lt;/version&gt;
+      &lt;executions&gt;
+        &lt;execution&gt;
+          &lt;id&gt;attach-sources&lt;/id&gt;
+          &lt;pahse&gt;verify&lt;/pahse&gt;
+          &lt;goals&gt;
+            &lt;goal&gt;jar-no-fork&lt;/goal&gt;
+          &lt;/goals&gt;
+        &lt;/execution&gt;
+      &lt;/executions&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li><code>executions</code> 配置多个执行任务</li> <li><code>execution</code> 配置单个执行任务</li> <li><code>id</code> 任务ID</li> <li><code>phase</code> 配置生命周期阶段，将任务与阶段进行绑定</li> <li><code>goals</code> 指定要执行的插件目标</li></ul> <p>很多插件目标在编写时已经定义了默认绑定的阶段，因此可以不用配置<code>phase</code>元素，可以通过<a href="https://maven.apache.org/plugins/maven-help-plugin/index.html" target="_blank" rel="noopener noreferrer"><code>maven-help-plugin</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>查看更多信息。</p> <h3 id="插件配置"><a href="#插件配置" aria-hidden="true" class="header-anchor">#</a> 插件配置</h3> <p>完成插件与生命周期绑定后，还可以配置插件目标的参数，进一步调整插件目标执行的任务。通常有三种插件配置方式：</p> <ul><li>命令行插件参数配置
+我们可以在命令行中使用<code>-D</code> 携带参数信息来配置插件目标参数，如：<code>mvn install -Dmaven.test.skip=true</code> ,<code>maven-surefire-plugin</code> 中提供了一个<code>maven.test.skip</code>参数，当值为<code>true</code> 的时候，就会跳过测试。</li> <li>POM中插件全局配置
+在声明插件的时候，对插件进行全局配置，此插件的所有目标任务都会使用这些配置。如：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+      &lt;version&gt;2.1.2&lt;/version&gt;
+      &lt;configuration&gt;
+        &lt;source&gt;1.8&lt;/source&gt;
+        &lt;target&gt;1.8&lt;/target&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>POM中插件任务配置
+除了进行全局配置，用户可以为某个特定插件任务配置参数。如：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
+      &lt;version&gt;1.3&lt;/version&gt;
+      &lt;excutions&gt;
+        &lt;excution&gt;
+          &lt;id&gt;ant-validate&lt;/id&gt;
+          &lt;phase&gt;validate&lt;/phase&gt;
+          &lt;goals&gt;
+            &lt;goal&gt;run&lt;goal&gt;
+          &lt;/goals&gt;
+          &lt;configuration&gt;
+            &lt;tasks&gt;
+              &lt;echo&gt;I'm bound to validate phase.&lt;/echo&gt;
+            &lt;/tasks&gt;
+          &lt;/configuration&gt;
+        &lt;/excution&gt;
+      &lt;/excutions&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h2 id="聚合与继承"><a href="#聚合与继承" aria-hidden="true" class="header-anchor">#</a> 聚合与继承</h2> <h3 id="聚合"><a href="#聚合" aria-hidden="true" class="header-anchor">#</a> 聚合</h3> <p>在多模块下，Maven可以通过聚合模块的方式实现多模块的构建、打包等工作。聚合模块的POM文件中<code>packaging</code>值必须为<code>pom</code>，否则无法完成构建。通常聚合模块的POM文件格式如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>...
+&lt;groupId&gt;...&lt;/groupId&gt;
+&lt;artifactId&gt;...&lt;/artifactId&gt;
+&lt;version&gt;...&lt;/version&gt;
+&lt;packaging&gt;pom&lt;/packaging&gt;
+&lt;name&gt;...&lt;/name&gt;
+&lt;modules&gt;
+  &lt;module&gt;module-a&lt;/moudule&gt;
+  &lt;module&gt;module-b&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>modules 用于引入多模块配置</li> <li>module 子模块POM文件的相对目录</li></ul> <p>通常，模块所在的目录名称应当与其artifactId一致，如果用户将module-a项目放到a-module目录下，这时聚合模块的配置就要相应改成<code>&lt;module&gt;a-module&lt;/module&gt;</code>。</p> <h3 id="继承"><a href="#继承" aria-hidden="true" class="header-anchor">#</a> 继承</h3> <p>POM的继承，用于将子模块POM文件中相同的公共配置提取到聚合模块中。</p> <ol><li>首先提取出公共或重复配置到父模块系统中，如下：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+&lt;artifactId&gt;module-parent&lt;/artifactId&gt;
+&lt;version&gt;1.0.0&lt;/version&gt;
+&lt;packaging&gt;pom&lt;/packaging&gt;
+&lt;name&gt;Module Parent&lt;/name&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ol start="2"><li>配置子模块继承父模块，如下：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;parent&gt;
+  &lt;groupId&gt;xyz.yxguang.mvn.demo&lt;/groupId&gt;
+  &lt;artifactId&gt;module-parent&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;relativePath&gt;&lt;/relativePath&gt;
+&lt;/parent&gt;
+&lt;artifactId&gt;module-a&lt;/artifactId&gt;
+&lt;name&gt;module-a&lt;/name&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>relativePath 表示父元素POM文件的相对路径</li></ul> <ol start="3"><li>聚合模块，如下</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;modules&gt;
+  &lt;module&gt;module-a&lt;/module&gt;
+  &lt;module&gt;module-b&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="可继承的pom元素"><a href="#可继承的pom元素" aria-hidden="true" class="header-anchor">#</a> 可继承的POM元素</h3> <ul><li>groupId</li> <li>version</li> <li>description</li> <li>orgnaization</li> <li>inceptionYear</li> <li>url</li> <li>developers</li> <li>contributors</li> <li>distributionManagement</li> <li>issueManagement</li> <li>ciManagement</li> <li>scm</li> <li>mailingLists</li> <li>properties</li> <li>dependencies</li> <li>dependencyManagement</li> <li>repositories</li> <li>build</li> <li>reporting</li></ul> <h2 id="依赖管理"><a href="#依赖管理" aria-hidden="true" class="header-anchor">#</a> 依赖管理</h2> <h3 id="dependenceis-与-dependencymanagement"><a href="#dependenceis-与-dependencymanagement" aria-hidden="true" class="header-anchor">#</a> dependenceis 与 dependencyManagement</h3> <ul><li><p>dependencies<br>
+支持依赖继承，如果子模块继承父模块，则子模块继承父模块所有<code>dependencies</code>依赖。如：<br>
+module-parent 有四个依赖 dependency-1、dependency-2、dependency-3、dependency-4，如果module-a 继承module-parent 则，module-a 同时也会继承上述四个依赖。<br>
+上述做法可行，但存在问题。如果现在有一个新模块module-b需要继承module-parent，但是仅需要继承dependency-1 依赖，那么使用<code>dependencies</code> 无法满足我们的要求。</p></li> <li><p>dependencyManagement
+<code>dependencyManagement</code>能够让子模块继承到父模块的依赖配置，又能保证子模块依赖使用的灵活性。<code>dependencyManagement</code>元素下的依赖声明不会引入实际的依赖，但是它能够管理子模块的依赖。</p></li></ul></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">5/22/2019, 5:42:53 PM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.e02d9fbd.js" defer></script><script src="/assets/js/10.05012786.js" defer></script>
+  </body>
+</html>
